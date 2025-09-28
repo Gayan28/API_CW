@@ -1,6 +1,6 @@
 import Schedule from '../models/Schedule.js';
 import Bus from '../models/Bus.js';
-import Route from '../models/Route.js';
+import Route from '../models/BusRoute.js';
 
 // Create schedule
 export const createSchedule = async (req, res, next) => {
