@@ -1,0 +1,31 @@
+{
+  "openapi": "3.0.0",
+  "info": { "title": "NTC Bus Tracker API", "version": "1.0.0" },
+  "paths": {
+    "/api/locations": {
+      "post": {
+        "summary": "Add location",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type":"object",
+                "properties":{
+                  "busId":{"type":"string"},
+                  "lat":{"type":"number"},
+                  "lng":{"type":"number"},
+                  "speed":{"type":"number"}
+                },
+                "required":["busId","lat","lng"]
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Created" } }
+      }
+    }
+  },
+  "components": { "securitySchemes": { "bearerAuth": { "type": "http", "scheme": "bearer", "bearerFormat": "JWT" } } }
+}
