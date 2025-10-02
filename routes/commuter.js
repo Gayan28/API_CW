@@ -7,16 +7,13 @@ const router = express.Router();
 /**
  * Commuter: Create a new complaint
  */
-router.post('/', protect, authorize('commuter'), createComplaint);
+router.post('/create_complain', protect, authorize('commuter'), createComplaint);
 
 /**
  * Commuter: Get my complaints
  */
-router.get('/my', protect, authorize('commuter'), getMyComplaints);
+router.get('/get_complains', protect, authorize('commuter'), getMyComplaints);
 
-/**
- * Admin: View all complaints
- */
-router.get('/', protect, authorize('admin'), getAllComplaints);
+
 
 export default router;

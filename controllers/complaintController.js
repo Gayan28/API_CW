@@ -7,19 +7,19 @@ import Complaint from '../models/Complaint.js';
  */
 export const createComplaint = async (req, res, next) => {
   try {
-    const { complaintId, complaintDate, complaintTime, busId, description } = req.body;
+    const {complaintDate, complaintTime, busId, description } = req.body;
 
-    if (!complaintId || !busId || !description || !complaintTime) {
+    if (!busId || !description || !complaintTime) {
       return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
 
     const complaint = await Complaint.create({
-      complaintId,
+
       complaintDate,
       complaintTime,
       busId,
       description,
-      commuter: req.user._id
+      userId: req.user._id   // logged-in commuter
     });
 
     res.status(201).json({ success: true, data: complaint });
@@ -35,7 +35,7 @@ export const createComplaint = async (req, res, next) => {
  */
 export const getMyComplaints = async (req, res, next) => {
   try {
-    const complaints = await Complaint.find({ commuter: req.user._id }).sort({ createdAt: -1 });
+    const complaints = await Complaint.find({ userId: req.user._id }).sort({ createdAt: -1 });
     res.json({ success: true, count: complaints.length, data: complaints });
   } catch (err) {
     next(err);
@@ -49,7 +49,7 @@ export const getMyComplaints = async (req, res, next) => {
  */
 export const getAllComplaints = async (req, res, next) => {
   try {
-    const complaints = await Complaint.find().populate('commuter', 'name email');
+    const complaints = await Complaint.find().populate('userId', 'name email role');
     res.json({ success: true, count: complaints.length, data: complaints });
   } catch (err) {
     next(err);

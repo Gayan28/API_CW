@@ -7,7 +7,9 @@ import routeRoutes from './routes/busroutes.js';
 import busRoutes from './routes/buses.js';
 import scheduleRoutes from './routes/schedules.js';
 import locationRoutes from './routes/locations.js';
+import commuterRoutes from './routes/commuter.js';
 import errorHandler from './middleware/errorHandler.js';
+import adminRoutes from './routes/admin.js';
 
 dotenv.config();
 const app = express();
@@ -23,6 +25,8 @@ app.use('/api/routes', routeRoutes);
 app.use('/api/buses', busRoutes);
 app.use('/api/schedules', scheduleRoutes);
 app.use('/api/locations', locationRoutes);
+app.use('/api/commuter', commuterRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.use(errorHandler);
 

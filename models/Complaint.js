@@ -1,11 +1,6 @@
 import mongoose from 'mongoose';
 
 const complaintSchema = new mongoose.Schema({
-  complaintId: {
-    type: String,
-    required: true,
-    unique: true
-  },
   complaintDate: {
     type: Date,
     required: true,
@@ -24,9 +19,9 @@ const complaintSchema = new mongoose.Schema({
     required: true,
     maxlength: 500
   },
-  commuter: {
+  userId: {   // Explicit field for commuter userId
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // who submitted the complaint
+    ref: 'User',
     required: true
   }
 }, { timestamps: true });
