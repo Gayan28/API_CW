@@ -4,10 +4,10 @@ import { createBus, getBuses, getBus, updateBus, deleteBus } from '../controller
 
 const router = express.Router();
 
-router.post('/', protect, authorize('admin','operator'), createBus);
-router.get('/', getBuses);
-router.get('/:id', getBus);
-router.put('/:id', protect, authorize('admin','operator'), updateBus);
-router.delete('/:id', protect, authorize('admin'), deleteBus);
+router.post('/create', protect, authorize('admin','operator'), createBus);
+router.get('/get', getBuses);
+router.get('/get/:id', getBus);
+router.put('/update/:id', protect, authorize('admin','operator'), updateBus);
+router.delete('/delete/:id', protect, authorize('admin'), deleteBus);
 
 export default router;

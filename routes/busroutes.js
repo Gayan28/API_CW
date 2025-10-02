@@ -4,10 +4,10 @@ import { createRoute, getRoutes, getRoute, updateRoute, deleteRoute } from '../c
 
 const router = express.Router();
 
-router.post('/', protect, authorize('admin'), createRoute);
-router.get('/', getRoutes);
-router.get('/:id', getRoute);
-router.put('/:id', protect, authorize('admin'), updateRoute);
-router.delete('/:id', protect, authorize('admin'), deleteRoute);
+router.post('/create', protect, authorize('admin'), createRoute);
+router.get('/get', getRoutes);
+router.get('/get/:id', getRoute);
+router.put('/update/:id', protect, authorize('admin'), updateRoute);
+router.delete('/delete/:id', protect, authorize('admin'), deleteRoute);
 
 export default router;

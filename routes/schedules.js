@@ -4,11 +4,11 @@ import { createSchedule, getSchedules, getSchedule, updateSchedule, deleteSchedu
 
 const router = express.Router();
 
-router.post('/', protect, authorize('admin','operator'), createSchedule);
-router.get('/', getSchedules);
-router.get('/:id', getSchedule);
-router.put('/:id', protect, authorize('admin','operator'), updateSchedule);
-router.delete('/:id', protect, authorize('admin'), deleteSchedule);
+router.post('/create', protect, authorize('admin','operator'), createSchedule);
+router.get('/get', getSchedules);
+router.get('/get/:id', getSchedule);
+router.put('/update/:id', protect, authorize('admin','operator'), updateSchedule);
+router.delete('/delete/:id', protect, authorize('admin'), deleteSchedule);
 
 // Custom endpoints
 router.get('/byRoute/:routeId', getSchedulesByRoute);
